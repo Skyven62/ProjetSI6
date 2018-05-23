@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+{% block style %}<link href="css/style-signin.css" rel="stylesheet"> {% endblock %}
+{% block title %} {{ parent() }} Se connecter {% endblock %}
+{% block contenu %} 
+      
+    {% if form.valide is defined %} 
+    {% if form.valide == false %}
+        <h1 class="h1 mb-3 font-weight-normal"> {{form.message}}</h1>
+    {% endif %} 
+    {% endif %} 
+    
+    <div class="login-container">
+  <section class="login" id="login">
+    <header>
+      <h2>Connectez-vous</h2>
+      <h4></h4>
+    </header>
+    <form class="login-form" action="#" method="post">
+      <input type="text" class="login-input" placeholder="Email" name="inputEmail" required autofocus/>
+      <input type="password" class="login-input" placeholder="Mot de passe" name="inputPassword" required/>
+      <div class="submit-container">
+        <button type="submit" class="login-button" name="btConnecter">Se Connecter</button>
+       <a href="index.php?page=inscrire" > <button type="submit" class="login-button">S'Inscrire</button></a>
+      </div>
+    </form>
+  </section>
+  
+</div>
+
+    <script  src="js/index.js"></script>
+{% endblock %} 

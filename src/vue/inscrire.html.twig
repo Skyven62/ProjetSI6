@@ -1,0 +1,50 @@
+{% extends "base.html.twig" %}
+{% block style %}<link href="css/style-signin.css" rel="stylesheet"> {% endblock %}
+{% block title %} {{ parent() }} Se connecter {% endblock %}
+{% block contenu %} 
+      
+   {% if form.valide is defined %} 
+    {% if form.valide == true %}
+       <h1 class="h3 mb-3 font-weight-normal">Inscription réussie</h1>
+       <h1 class="h3 mb-3 font-weight-normal">Voici votre identifiant : {{form.email}}</h1>
+       {% if form.role == 1 %}
+           <h1 class="h3 mb-3 font-weight-normal">Vous êtes administrateur du site</h1>
+       {% else %}
+           <h1 class="h3 mb-3 font-weight-normal">Vous êtes un client du site </h1>
+       {% endif %}    
+{% else %} 
+       <h1 class="h3 mb-3 font-weight-normal">Echec de l'inscription</h1> 
+       <h1 class="h3 mb-3 font-weight-normal">Erreur : {{form.message}}</h1>
+       <h1 class="h3 mb-3 font-weight-normal"><a href="index.php?page=inscrire">Retourner sur 
+la page d'inscription</a></h1>
+    {% endif %}     
+{% else %}    
+    <div class="login-container">
+  <section class="login" id="login">
+    <header>
+      <h2>Inscrivez-vous</h2>
+      <h4></h4>
+    </header>
+    <form class="login-form" action="index.php?page=inscrire" method="post" enctype="application/x-www-form-urlencoded">
+      <input type="text" class="login-input" placeholder="Email" name="inputEmail" required autofocus/>
+      <input type="password" class="login-input" placeholder="Mot de passe" name="inputPassword" required/>
+      <input type="password" class="login-input" placeholder="Confirmation de mot de passe" name="inputPassword2" required/>
+      <input type="text" class="login-input" placeholder="Nom" name="inputNom" required/>
+      <input type="text" class="login-input" placeholder="Prenom" name="inputPrenom" required/>
+      <select class="login-input" name="role">
+      <option value="1">Administrateur</option>
+      <option value="2">Client</option>
+      </select>
+      <div class="submit-container">
+        <button type="submit" class="login-button" name="btInscrire">S'Inscrire</button>
+      </div>
+    </form>
+  </section>
+  
+</div>
+  
+  
+
+    <script  src="js/index.js"></script>
+{%endif%}
+{% endblock %}
